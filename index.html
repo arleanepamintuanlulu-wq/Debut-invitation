@@ -60,17 +60,18 @@
 <script>
 const music = document.getElementById("bg-music");
 
+// 🔥 PLAY WHEN ENVELOPE CLICKED (BEST TRIGGER)
 function openEnvelope() {
     const envelope = document.querySelector('.envelope-icon');
 
-    // 🎵 PLAY MUSIC FIRST
+    // PLAY MUSIC
     music.volume = 1;
     music.currentTime = 0;
 
     music.play().then(() => {
         console.log("Music playing ✅");
 
-        // ⏳ WAIT so user can actually hear it
+        // ⏳ WAIT para marinig mo bago lumipat
         setTimeout(() => {
             window.location.href = "main-invitation.html";
         }, 2500); // 2.5 seconds
@@ -78,7 +79,7 @@ function openEnvelope() {
     }).catch(err => {
         console.log("Error:", err);
 
-        // fallback redirect
+        // fallback
         setTimeout(() => {
             window.location.href = "main-invitation.html";
         }, 2500);
