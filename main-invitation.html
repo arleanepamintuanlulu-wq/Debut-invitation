@@ -89,20 +89,20 @@ html, body {
     border: 0;
 }
 
-/* 💙 FIXED HEART */
+/* 💙 HEART */
 .rsvp-heart {
     position: fixed;
-    bottom: 80px; /* nakaangat */
+    bottom: 110px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
 
-    font-size: 52px;
+    font-size: 60px;
     color: #1e3a8a;
 
     text-shadow: 
-        0 0 8px rgba(255,255,255,0.9),
-        0 0 15px rgba(30,58,138,0.9);
+        0 0 10px rgba(255,255,255,1),
+        0 0 20px rgba(30,58,138,1);
 
     animation: pulse 1.5s infinite;
     cursor: pointer;
@@ -184,7 +184,7 @@ html, body {
 
 </div>
 
-<!-- 💙 HEART WITH YOUR FORM -->
+<!-- 💙 RSVP HEART (YOUR REAL LINK) -->
 <a href="https://docs.google.com/forms/d/e/1FAIpQLScU7wI7EPzUM52fvXDfEvZxhGZOM4b5N3s2jWppuLyYfVmftw/viewform?usp=header" target="_blank">
     <div class="rsvp-heart">💙</div>
 </a>
@@ -228,8 +228,8 @@ btn.addEventListener("click", () => {
     }
 });
 
-// COUNTDOWN
-const targetDate = new Date("June 25, 2026 18:00:00");
+// COUNTDOWN → MAY 02, 2026
+const targetDate = new Date("May 02, 2026 18:00:00");
 
 function updateCountdown() {
     const now = new Date();
