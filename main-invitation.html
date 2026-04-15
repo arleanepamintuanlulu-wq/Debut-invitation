@@ -12,7 +12,6 @@ html, body {
     margin: 0;
     padding: 0;
     background: #ffffff;
-    overflow-y: auto;
     font-family: Arial, sans-serif;
 }
 
@@ -49,6 +48,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     background: rgba(255,255,255,0.18);
     backdrop-filter: blur(12px);
     border-radius: 20px;
@@ -82,18 +82,18 @@ html, body {
     border: 0;
 }
 
-/* 💙 IMAGE 17 */
+/* 💙 IMAGE 17 CONTAINER */
 .page17 {
     position: relative;
 }
 
-/* 💙 HEART (NAKA ANCHOR SA IMAGE 17) */
+/* 💙 HEART FIXED SA IMAGE 17 LANG */
 .rsvp-heart {
-    position: absolute; /* 🔥 IMPORTANT */
-    bottom: 12%; /* 👈 inangat konti */
+    position: absolute;
+    bottom: 80px; /* nakaangat */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10;
+    z-index: 5;
 
     font-size: 60px;
     color: #1e3a8a;
