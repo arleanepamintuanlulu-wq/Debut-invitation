@@ -112,7 +112,54 @@ html, body {
 
 <body>
 
-<div class="gallery" id="gallery"></div>
+<div class="gallery">
+
+    <img src="2.png">
+    <img src="3.png">
+
+    <!-- PAGE 4 (WITH COUNTDOWN + MAP) -->
+    <div class="page4">
+        <img src="4.png">
+
+        <div class="countdown">
+            <div class="time-box">
+                <div class="number" id="days">0</div>
+                <div class="label">DAYS</div>
+            </div>
+            <div class="time-box">
+                <div class="number" id="hours">0</div>
+                <div class="label">HOURS</div>
+            </div>
+            <div class="time-box">
+                <div class="number" id="minutes">0</div>
+                <div class="label">MIN</div>
+            </div>
+            <div class="time-box">
+                <div class="number" id="seconds">0</div>
+                <div class="label">SEC</div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps?q=Casa+Hava+Sta+Ana+Manila&output=embed"></iframe>
+        </div>
+    </div>
+
+    <img src="5.png">
+    <img src="6.png">
+    <img src="7.png">
+    <img src="8.png">
+    <img src="9.png">
+    <img src="10.png">
+    <img src="11.png">
+    <img src="12.png">
+    <img src="13.png">
+    <img src="14.png">
+    <img src="15.png">
+    <img src="16.png">
+    <img src="17.png">
+
+</div>
 
 <!-- 🎵 MUSIC -->
 <audio id="bg-music" loop autoplay muted>
@@ -122,54 +169,6 @@ html, body {
 <button id="music-btn">🔇</button>
 
 <script>
-
-// 🔥 AUTO LOAD IMAGES 2–17
-const gallery = document.getElementById("gallery");
-
-for (let i = 2; i <= 17; i++) {
-
-    if (i === 4) {
-        // special page with countdown + map
-        const page = document.createElement("div");
-        page.className = "page4";
-
-        page.innerHTML = `
-            <img src="${i}.png">
-
-            <div class="countdown">
-                <div class="time-box">
-                    <div class="number" id="days">0</div>
-                    <div class="label">DAYS</div>
-                </div>
-                <div class="time-box">
-                    <div class="number" id="hours">0</div>
-                    <div class="label">HOURS</div>
-                </div>
-                <div class="time-box">
-                    <div class="number" id="minutes">0</div>
-                    <div class="label">MIN</div>
-                </div>
-                <div class="time-box">
-                    <div class="number" id="seconds">0</div>
-                    <div class="label">SEC</div>
-                </div>
-            </div>
-
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps?q=Casa+Hava+Sta+Ana+Manila&output=embed"></iframe>
-            </div>
-        `;
-
-        gallery.appendChild(page);
-
-    } else {
-        const img = document.createElement("img");
-        img.src = i + ".png";
-        gallery.appendChild(img);
-    }
-}
-
-// 🎵 MUSIC
 const music = document.getElementById("bg-music");
 const btn = document.getElementById("music-btn");
 
@@ -193,7 +192,7 @@ window.addEventListener("load", () => {
     });
 });
 
-// button toggle
+// toggle button
 btn.addEventListener("click", () => {
     if (music.paused) {
         music.play();
@@ -204,7 +203,6 @@ btn.addEventListener("click", () => {
         btn.innerHTML = "🔇";
     }
 });
-
 </script>
 
 </body>
