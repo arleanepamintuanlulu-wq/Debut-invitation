@@ -52,7 +52,7 @@ html, body {
 
 .time-box {
     width: 18vw;
-    height: 22vw;
+    height: 24vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,11 +67,14 @@ html, body {
     font-size: 7vw;
     font-weight: bold;
     color: white;
+    line-height: 1;
 }
 
 .label {
     font-size: 2.5vw;
     color: white;
+    margin-top: 8px;
+    letter-spacing: 2px;
 }
 
 /* MAP */
@@ -91,15 +94,28 @@ html, body {
     border: 0;
 }
 
-/* ❤️ RSVP HEART (FIXED) */
+/* 💙 RSVP HEART */
 .rsvp-heart {
     position: absolute;
-    top: 75%;
+    top: 82%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 20; /* ABOVE EVERYTHING */
+    z-index: 999;
 
-    font-size: 40px;
+    font-size: 52px;
+    color: #1e3a8a;
+
+    text-shadow: 
+        0 0 8px rgba(255,255,255,0.9),
+        0 0 15px rgba(30,58,138,0.9);
+
+    animation: pulse 1.5s infinite;
+    cursor: pointer;
+}
+
+@keyframes pulse {
+    0%,100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.15); }
 }
 
 /* MUSIC BUTTON */
@@ -159,8 +175,8 @@ html, body {
             <iframe src="https://www.google.com/maps?q=Casa+Hava+Sta+Ana+Manila&output=embed"></iframe>
         </div>
 
-        <!-- ❤️ HEART -->
-        <div class="rsvp-heart">❤️</div>
+        <!-- 💙 HEART -->
+        <div class="rsvp-heart">💙</div>
 
     </div>
 
@@ -188,7 +204,7 @@ html, body {
 <button id="music-btn">🔇</button>
 
 <script>
-// MUSIC (WORKING)
+// 🎵 MUSIC
 const music = document.getElementById("bg-music");
 const btn = document.getElementById("music-btn");
 
@@ -220,7 +236,7 @@ btn.addEventListener("click", () => {
     }
 });
 
-// COUNTDOWN (SAFE + WORKING)
+// ⏳ COUNTDOWN
 const targetDate = new Date("June 25, 2026 18:00:00");
 
 function updateCountdown() {
