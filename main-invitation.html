@@ -45,7 +45,7 @@ html, body {
     top: 26%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 20;
+    z-index: 10;
     display: flex;
     gap: 12px;
 }
@@ -82,7 +82,7 @@ html, body {
     transform: translateX(-50%);
     width: 70vw;
     height: 70vw;
-    z-index: 10;
+    z-index: 5;
 }
 
 .map-container iframe {
@@ -91,24 +91,15 @@ html, body {
     border: 0;
 }
 
-/* ❤️ RSVP HEART */
+/* ❤️ RSVP HEART (FIXED) */
 .rsvp-heart {
     position: absolute;
     top: 75%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 30;
+    z-index: 20; /* ABOVE EVERYTHING */
 
-    font-size: 42px;
-    color: #8B0000;
-
-    animation: beat 1.2s infinite;
-    cursor: pointer;
-}
-
-@keyframes beat {
-    0%, 100% { transform: translateX(-50%) scale(1); }
-    50% { transform: translateX(-50%) scale(1.2); }
+    font-size: 40px;
 }
 
 /* MUSIC BUTTON */
@@ -168,8 +159,8 @@ html, body {
             <iframe src="https://www.google.com/maps?q=Casa+Hava+Sta+Ana+Manila&output=embed"></iframe>
         </div>
 
-        <!-- ❤️ RSVP -->
-        <div class="rsvp-heart" onclick="alert('RSVP here 💌')">❤️</div>
+        <!-- ❤️ HEART -->
+        <div class="rsvp-heart">❤️</div>
 
     </div>
 
@@ -197,7 +188,7 @@ html, body {
 <button id="music-btn">🔇</button>
 
 <script>
-// 🎵 MUSIC FIX
+// MUSIC (WORKING)
 const music = document.getElementById("bg-music");
 const btn = document.getElementById("music-btn");
 
@@ -229,11 +220,11 @@ btn.addEventListener("click", () => {
     }
 });
 
-// ⏳ COUNTDOWN (FIXED)
-const targetDate = new Date("June 25, 2026 18:00:00").getTime();
+// COUNTDOWN (SAFE + WORKING)
+const targetDate = new Date("June 25, 2026 18:00:00");
 
-setInterval(() => {
-    const now = new Date().getTime();
+function updateCountdown() {
+    const now = new Date();
     const gap = targetDate - now;
 
     if (gap <= 0) return;
@@ -247,8 +238,11 @@ setInterval(() => {
     document.getElementById("hours").innerText = hours;
     document.getElementById("minutes").innerText = minutes;
     document.getElementById("seconds").innerText = seconds;
+}
 
-}, 1000);
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
 </script>
 
 </body>
