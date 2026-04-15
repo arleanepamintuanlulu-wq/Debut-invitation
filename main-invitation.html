@@ -33,6 +33,7 @@ html, body {
     display: block;
 }
 
+/* PAGE 4 */
 .page4 {
     position: relative;
     width: 100vw;
@@ -44,7 +45,7 @@ html, body {
     top: 26%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10;
+    z-index: 20;
     display: flex;
     gap: 12px;
 }
@@ -81,12 +82,33 @@ html, body {
     transform: translateX(-50%);
     width: 70vw;
     height: 70vw;
+    z-index: 10;
 }
 
 .map-container iframe {
     width: 100%;
     height: 100%;
     border: 0;
+}
+
+/* ❤️ RSVP HEART */
+.rsvp-heart {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+
+    font-size: 42px;
+    color: #8B0000;
+
+    animation: beat 1.2s infinite;
+    cursor: pointer;
+}
+
+@keyframes beat {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.2); }
 }
 
 /* MUSIC BUTTON */
@@ -117,10 +139,11 @@ html, body {
     <img src="2.png">
     <img src="3.png">
 
-    <!-- PAGE 4 (WITH COUNTDOWN + MAP) -->
+    <!-- PAGE 4 -->
     <div class="page4">
         <img src="4.png">
 
+        <!-- COUNTDOWN -->
         <div class="countdown">
             <div class="time-box">
                 <div class="number" id="days">0</div>
@@ -140,9 +163,14 @@ html, body {
             </div>
         </div>
 
+        <!-- MAP -->
         <div class="map-container">
             <iframe src="https://www.google.com/maps?q=Casa+Hava+Sta+Ana+Manila&output=embed"></iframe>
         </div>
+
+        <!-- ❤️ RSVP -->
+        <div class="rsvp-heart" onclick="alert('RSVP here 💌')">❤️</div>
+
     </div>
 
     <img src="5.png">
@@ -169,20 +197,18 @@ html, body {
 <button id="music-btn">🔇</button>
 
 <script>
+// 🎵 MUSIC FIX
 const music = document.getElementById("bg-music");
 const btn = document.getElementById("music-btn");
 
 music.volume = 0.4;
 
-// autoplay fix
 window.addEventListener("load", () => {
     music.play().then(() => {
-
         setTimeout(() => {
             music.muted = false;
             btn.innerHTML = "🔊";
         }, 1000);
-
     }).catch(() => {
         document.addEventListener("click", () => {
             music.muted = false;
@@ -192,7 +218,6 @@ window.addEventListener("load", () => {
     });
 });
 
-// toggle button
 btn.addEventListener("click", () => {
     if (music.paused) {
         music.play();
@@ -203,6 +228,27 @@ btn.addEventListener("click", () => {
         btn.innerHTML = "🔇";
     }
 });
+
+// ⏳ COUNTDOWN (FIXED)
+const targetDate = new Date("June 25, 2026 18:00:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const gap = targetDate - now;
+
+    if (gap <= 0) return;
+
+    const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((gap / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((gap / (1000 * 60)) % 60);
+    const seconds = Math.floor((gap / 1000) % 60);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+
+}, 1000);
 </script>
 
 </body>
