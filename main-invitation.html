@@ -48,22 +48,21 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
 }
 
+/* NUMBER + LABEL FIX */
 .number {
     font-size: 7vw;
     color: white;
     font-weight: bold;
+    line-height: 1;
 }
 
 .label {
     font-size: 2.5vw;
     color: white;
-    margin-top: 8px;
+    margin-top: 6px;
+    letter-spacing: 2px;
 }
 
 /* MAP */
@@ -82,20 +81,21 @@ html, body {
     border: 0;
 }
 
-/* 💙 IMAGE 17 CONTAINER */
+/* 💙 IMAGE 17 */
 .page17 {
     position: relative;
 }
 
-/* 💙 HEART FIXED SA IMAGE 17 LANG */
+/* 💙 HEART (FINAL ADJUSTED) */
 .rsvp-heart {
     position: absolute;
-    bottom: 80px; /* nakaangat */
+    bottom: 100px; /* 👈 slight angat */
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
 
-    font-size: 60px;
+    font-size: 70px; /* 👈 slight bigger */
+
     color: #1e3a8a;
 
     text-shadow:
@@ -176,7 +176,7 @@ html, body {
 <img src="15.png">
 <img src="16.png">
 
-<!-- 💙 IMAGE 17 WITH HEART -->
+<!-- 💙 IMAGE 17 -->
 <div class="page17">
     <img src="17.png">
 
@@ -226,7 +226,7 @@ btn.addEventListener("click", () => {
     }
 });
 
-// ⏳ COUNTDOWN (PH TIME FIXED)
+// ⏳ COUNTDOWN (PH TIME)
 const targetDate = new Date("2026-05-02T18:00:00+08:00");
 
 function updateCountdown() {
@@ -238,7 +238,7 @@ function updateCountdown() {
     document.getElementById("days").innerText = Math.floor(gap / (1000*60*60*24));
     document.getElementById("hours").innerText = Math.floor((gap / (1000*60*60)) % 24);
     document.getElementById("minutes").innerText = Math.floor((gap / (1000*60)) % 60);
-    document.getElementById("seconds").innerText = Math.floor((gap / 1000) % 60);
+    document.getElementById("seconds").innerText = Math.floor((gap / (1000) % 60));
 }
 
 setInterval(updateCountdown, 1000);
