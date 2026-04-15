@@ -94,10 +94,10 @@ html, body {
     border: 0;
 }
 
-/* 💙 RSVP HEART */
+/* 💙 HEART FIXED SA BABA */
 .rsvp-heart {
-    position: absolute;
-    top: 82%;
+    position: fixed;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
@@ -174,10 +174,6 @@ html, body {
         <div class="map-container">
             <iframe src="https://www.google.com/maps?q=Casa+Hava+Sta+Ana+Manila&output=embed"></iframe>
         </div>
-
-        <!-- 💙 HEART -->
-        <div class="rsvp-heart">💙</div>
-
     </div>
 
     <img src="5.png">
@@ -196,6 +192,9 @@ html, body {
 
 </div>
 
+<!-- 💙 HEART NASA BABA -->
+<div class="rsvp-heart">💙</div>
+
 <!-- 🎵 MUSIC -->
 <audio id="bg-music" loop autoplay muted>
     <source src="music.mp3" type="audio/mpeg">
@@ -204,7 +203,7 @@ html, body {
 <button id="music-btn">🔇</button>
 
 <script>
-// 🎵 MUSIC
+// MUSIC
 const music = document.getElementById("bg-music");
 const btn = document.getElementById("music-btn");
 
@@ -236,7 +235,7 @@ btn.addEventListener("click", () => {
     }
 });
 
-// ⏳ COUNTDOWN
+// COUNTDOWN
 const targetDate = new Date("June 25, 2026 18:00:00");
 
 function updateCountdown() {
