@@ -27,7 +27,6 @@
         display: block;
     }
 
-    /* YOUR ENVELOPE (UNCHANGED) */
     .envelope-icon {
         position: absolute;
         top: 45%;
@@ -36,38 +35,56 @@
         font-size: 40vw;
         z-index: 10;
         cursor: pointer;
-
         transition: transform 0.6s ease, opacity 0.6s ease;
     }
 
-    /* OPEN EFFECT */
     .open {
         transform: translate(-50%, -50%) scale(1.2);
         opacity: 0;
     }
-
 </style>
 </head>
 
 <body>
 
 <div class="container">
-
     <img src="your-image.png" class="invitation">
-
     <div class="envelope-icon" onclick="openEnvelope()">✉️</div>
-
 </div>
 
+<!-- MUSIC -->
+<audio id="bg-music" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <script>
+const music = document.getElementById("bg-music");
+
 function openEnvelope() {
     const envelope = document.querySelector('.envelope-icon');
 
-    envelope.classList.add('open');
+    // 🎵 PLAY MUSIC FIRST
+    music.volume = 1;
+    music.currentTime = 0;
 
-    setTimeout(() => {
-        window.location.href = "main-invitation.html";
-    }, 600); // smooth delay
+    music.play().then(() => {
+        console.log("Music playing ✅");
+
+        // ⏳ WAIT so user can actually hear it
+        setTimeout(() => {
+            window.location.href = "main-invitation.html";
+        }, 2500); // 2.5 seconds
+
+    }).catch(err => {
+        console.log("Error:", err);
+
+        // fallback redirect
+        setTimeout(() => {
+            window.location.href = "main-invitation.html";
+        }, 2500);
+    });
+
+    envelope.classList.add('open');
 }
 </script>
 
