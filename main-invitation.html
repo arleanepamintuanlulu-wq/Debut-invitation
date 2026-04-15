@@ -94,13 +94,19 @@ html, body {
     border: 0;
 }
 
-/* 💙 HEART FIXED SA BABA */
+/* 💙 PAGE 17 */
+.page17 {
+    position: relative;
+    width: 100vw;
+}
+
+/* 💙 HEART ON IMAGE 17 */
 .rsvp-heart {
-    position: fixed;
-    bottom: 40px;
+    position: absolute;
+    bottom: 8%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 999;
+    z-index: 10;
 
     font-size: 52px;
     color: #1e3a8a;
@@ -150,7 +156,6 @@ html, body {
     <div class="page4">
         <img src="4.png">
 
-        <!-- COUNTDOWN -->
         <div class="countdown">
             <div class="time-box">
                 <div class="number" id="days">0</div>
@@ -170,7 +175,6 @@ html, body {
             </div>
         </div>
 
-        <!-- MAP -->
         <div class="map-container">
             <iframe src="https://www.google.com/maps?q=Casa+Hava+Sta+Ana+Manila&output=embed"></iframe>
         </div>
@@ -188,12 +192,17 @@ html, body {
     <img src="14.png">
     <img src="15.png">
     <img src="16.png">
-    <img src="17.png">
+
+    <!-- 💙 IMAGE 17 WITH HEART -->
+    <div class="page17">
+        <img src="17.png">
+
+        <a href="https://forms.gle/YOUR_FORM_LINK" target="_blank">
+            <div class="rsvp-heart">💙</div>
+        </a>
+    </div>
 
 </div>
-
-<!-- 💙 HEART NASA BABA -->
-<div class="rsvp-heart">💙</div>
 
 <!-- 🎵 MUSIC -->
 <audio id="bg-music" loop autoplay muted>
@@ -244,15 +253,10 @@ function updateCountdown() {
 
     if (gap <= 0) return;
 
-    const days = Math.floor(gap / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((gap / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((gap / (1000 * 60)) % 60);
-    const seconds = Math.floor((gap / 1000) % 60);
-
-    document.getElementById("days").innerText = days;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("seconds").innerText = seconds;
+    document.getElementById("days").innerText = Math.floor(gap / (1000*60*60*24));
+    document.getElementById("hours").innerText = Math.floor((gap / (1000*60*60)) % 24);
+    document.getElementById("minutes").innerText = Math.floor((gap / (1000*60)) % 60);
+    document.getElementById("seconds").innerText = Math.floor((gap / 1000) % 60);
 }
 
 setInterval(updateCountdown, 1000);
