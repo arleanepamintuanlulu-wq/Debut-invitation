@@ -36,7 +36,6 @@ html, body {
 /* PAGE 4 */
 .page4 {
     position: relative;
-    width: 100vw;
 }
 
 /* COUNTDOWN */
@@ -45,7 +44,6 @@ html, body {
     top: 26%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10;
     display: flex;
     gap: 12px;
 }
@@ -67,14 +65,12 @@ html, body {
     font-size: 7vw;
     font-weight: bold;
     color: white;
-    line-height: 1;
 }
 
 .label {
     font-size: 2.5vw;
     color: white;
     margin-top: 8px;
-    letter-spacing: 2px;
 }
 
 /* MAP */
@@ -85,7 +81,6 @@ html, body {
     transform: translateX(-50%);
     width: 70vw;
     height: 70vw;
-    z-index: 5;
 }
 
 .map-container iframe {
@@ -94,19 +89,13 @@ html, body {
     border: 0;
 }
 
-/* 💙 PAGE 17 */
-.page17 {
-    position: relative;
-    width: 100vw;
-}
-
-/* 💙 HEART ON IMAGE 17 */
+/* 💙 FIXED HEART */
 .rsvp-heart {
-    position: absolute;
-    bottom: 8%;
+    position: fixed;
+    bottom: 80px; /* nakaangat */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10;
+    z-index: 999;
 
     font-size: 52px;
     color: #1e3a8a;
@@ -152,25 +141,24 @@ html, body {
     <img src="2.png">
     <img src="3.png">
 
-    <!-- PAGE 4 -->
     <div class="page4">
         <img src="4.png">
 
         <div class="countdown">
             <div class="time-box">
-                <div class="number" id="days">0</div>
+                <div id="days" class="number">0</div>
                 <div class="label">DAYS</div>
             </div>
             <div class="time-box">
-                <div class="number" id="hours">0</div>
+                <div id="hours" class="number">0</div>
                 <div class="label">HOURS</div>
             </div>
             <div class="time-box">
-                <div class="number" id="minutes">0</div>
+                <div id="minutes" class="number">0</div>
                 <div class="label">MIN</div>
             </div>
             <div class="time-box">
-                <div class="number" id="seconds">0</div>
+                <div id="seconds" class="number">0</div>
                 <div class="label">SEC</div>
             </div>
         </div>
@@ -192,17 +180,14 @@ html, body {
     <img src="14.png">
     <img src="15.png">
     <img src="16.png">
-
-    <!-- 💙 IMAGE 17 WITH HEART -->
-    <div class="page17">
-        <img src="17.png">
-
-        <a href="https://forms.gle/YOUR_FORM_LINK" target="_blank">
-            <div class="rsvp-heart">💙</div>
-        </a>
-    </div>
+    <img src="17.png">
 
 </div>
+
+<!-- 💙 HEART WITH YOUR FORM -->
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScU7wI7EPzUM52fvXDfEvZxhGZOM4b5N3s2jWppuLyYfVmftw/viewform?usp=header" target="_blank">
+    <div class="rsvp-heart">💙</div>
+</a>
 
 <!-- 🎵 MUSIC -->
 <audio id="bg-music" loop autoplay muted>
@@ -236,7 +221,6 @@ window.addEventListener("load", () => {
 btn.addEventListener("click", () => {
     if (music.paused) {
         music.play();
-        music.muted = false;
         btn.innerHTML = "🔊";
     } else {
         music.pause();
