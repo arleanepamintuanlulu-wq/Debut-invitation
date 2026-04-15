@@ -31,18 +31,11 @@ html, body {
     width: 100vw;
     height: auto;
     display: block;
-    vertical-align: top;
-    transition: transform 0.6s ease;
-}
-
-.gallery img:hover {
-    transform: scale(1.02);
 }
 
 .page4 {
     position: relative;
     width: 100vw;
-    line-height: 0;
 }
 
 /* COUNTDOWN */
@@ -63,48 +56,21 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 8px;
 
     background: rgba(255,255,255,0.18);
     backdrop-filter: blur(12px);
     border-radius: 20px;
-
-    box-shadow: 0 0 20px rgba(0,0,0,0.4),
-                inset 0 0 10px rgba(255,255,255,0.25);
-
-    animation: float 3s ease-in-out infinite;
-}
-
-.time-box:nth-child(2){ animation-delay: 0.2s; }
-.time-box:nth-child(3){ animation-delay: 0.4s; }
-.time-box:nth-child(4){ animation-delay: 0.6s; }
-
-@keyframes float {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
-
-.time-box:hover {
-    transform: scale(1.05);
-    transition: 0.3s ease;
 }
 
 .number {
     font-size: 7vw;
     font-weight: bold;
     color: white;
-    text-shadow: 0 0 10px black;
-    line-height: 1;
 }
 
 .label {
     font-size: 2.5vw;
     color: white;
-    margin-top: 6px;
-    text-align: center;
-    line-height: 1.2;
-    white-space: nowrap;
-    text-shadow: 0 0 5px black;
 }
 
 /* MAP */
@@ -115,40 +81,12 @@ html, body {
     transform: translateX(-50%);
     width: 70vw;
     height: 70vw;
-    z-index: 10;
-
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
 .map-container iframe {
     width: 100%;
     height: 100%;
     border: 0;
-}
-
-/* HEART */
-.last-page {
-    position: relative;
-    width: 100vw;
-    line-height: 0;
-}
-
-.heart-link {
-    position: absolute;
-    top: 88%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    text-decoration: none;
-}
-
-.heart {
-    font-size: 18vw;
-    color: #0056b3;
-    text-shadow: 0 0 15px rgba(255,255,255,0.9),
-                 0 0 25px rgba(0,0,0,0.4);
 }
 
 /* MUSIC BUTTON */
@@ -167,15 +105,6 @@ html, body {
     cursor: pointer;
 
     background: rgba(255,255,255,0.3);
-    backdrop-filter: blur(10px);
-
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { box-shadow: 0 0 10px rgba(0,0,0,0.3); }
-    50% { box-shadow: 0 0 20px rgba(0,0,0,0.6); }
-    100% { box-shadow: 0 0 10px rgba(0,0,0,0.3); }
 }
 
 </style>
@@ -184,7 +113,6 @@ html, body {
 <body>
 
 <div class="gallery">
-
     <img src="2.png">
     <img src="3.png">
 
@@ -196,17 +124,14 @@ html, body {
                 <div class="number" id="days">0</div>
                 <div class="label">DAYS</div>
             </div>
-
             <div class="time-box">
                 <div class="number" id="hours">0</div>
                 <div class="label">HOURS</div>
             </div>
-
             <div class="time-box">
                 <div class="number" id="minutes">0</div>
                 <div class="label">MIN</div>
             </div>
-
             <div class="time-box">
                 <div class="number" id="seconds">0</div>
                 <div class="label">SEC</div>
@@ -219,82 +144,44 @@ html, body {
     </div>
 
     <img src="5.png">
-    <img src="6.png">
-    <img src="7.png">
-    <img src="8.png">
-    <img src="9.png">
-    <img src="10.png">
-    <img src="11.png">
-    <img src="12.png">
-    <img src="13.png">
-    <img src="14.png">
-    <img src="15.png">
-    <img src="16.png">
-
-    <div class="last-page">
-        <img src="17.png">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScU7wI7EPzUM52fvXDfEvZxhGZOM4b5N3s2jWppuLyYfVmftw/viewform?usp=header" target="_blank" class="heart-link">
-            <span class="heart">💙</span>
-        </a>
-    </div>
-
 </div>
 
-<!-- MUSIC -->
-<audio id="bg-music" loop preload="auto">
+<!-- 🎵 MUSIC -->
+<audio id="bg-music" loop autoplay muted>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <button id="music-btn">🔇</button>
 
 <script>
-const targetDate = new Date("May 2, 2026 00:00:00").getTime();
-
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    document.getElementById("days").innerHTML =
-        Math.floor(distance / (1000 * 60 * 60 * 24));
-
-    document.getElementById("hours").innerHTML =
-        Math.floor((distance / (1000 * 60 * 60)) % 24);
-
-    document.getElementById("minutes").innerHTML =
-        Math.floor((distance / (1000 * 60)) % 60);
-
-    document.getElementById("seconds").innerHTML =
-        Math.floor((distance / 1000) % 60);
-}
-
-setInterval(updateCountdown, 1000);
-
-// 🎵 MUSIC FIX
 const music = document.getElementById("bg-music");
 const btn = document.getElementById("music-btn");
 
 music.volume = 0.4;
 
-// TRY AUTO PLAY
+// 🔥 autoplay workaround
 window.addEventListener("load", () => {
     music.play().then(() => {
-        btn.innerHTML = "🔊";
+
+        setTimeout(() => {
+            music.muted = false;
+            btn.innerHTML = "🔊";
+        }, 1000);
+
     }).catch(() => {
-        // fallback if blocked
-        document.addEventListener("click", startMusic, { once: true });
+        document.addEventListener("click", () => {
+            music.muted = false;
+            music.play();
+            btn.innerHTML = "🔊";
+        }, { once: true });
     });
 });
 
-function startMusic() {
-    music.play().then(() => {
-        btn.innerHTML = "🔊";
-    }).catch(()=>{});
-}
-
-// BUTTON TOGGLE
+// 🔘 button toggle
 btn.addEventListener("click", () => {
     if (music.paused) {
         music.play();
+        music.muted = false;
         btn.innerHTML = "🔊";
     } else {
         music.pause();
